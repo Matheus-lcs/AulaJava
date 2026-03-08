@@ -1,18 +1,17 @@
-import java.util.*;
-
 public class Main {
 
-    String aluno;
-    double nota;
-    double frequencia;
+    public static void main(String[] args) {
+        double mediaAprovacao = 6.0;
 
-    Aluno al1 = new Aluno("Matheus", 100,0, 90%);
-    Aluno al2 = new Aluno("Jose", 80,00, 80%);
-    Aluno al3 = new Aluno("Marcelo", 60,00, 50%);
 
-    Main(String aluno, double nota, int frequencia) {
-        this.aluno = aluno;
-        this.nota = nota;
-        this.frequencia = frequencia;
+        Aluno aluno1 = new Aluno("João Pedro", 1010, 7.5, 8.0);
+        Aluno aluno2 = new Aluno("Polyana", 2020, 6.0, 5.5);
+        Aluno aluno3 = new Aluno("Leonardo", 3030, 4.0, 3.5);
+
+
+        aluno1.exibirResultado(mediaAprovacao);
+        aluno2.exibirResultado(mediaAprovacao);
+        aluno3.exibirResultado(mediaAprovacao);
+
     }
 }

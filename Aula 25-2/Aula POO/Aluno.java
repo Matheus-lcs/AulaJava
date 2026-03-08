@@ -1,27 +1,44 @@
 public class Aluno {
-
     String nome;
-    double nota;
-    double frequencia;
+    int matricula;
+    double nota1;
+    double nota2;
 
-    Aluno(String nome, double nota, double frequencia) {
-        this.nome = nome;
-        this.nota = nota;
-        this.frequencia = frequencia;
-    }
+    Aluno (
+        String nome,
+        int matricula,
+        double nota1,
+        double nota2
+        ) {
+            this.nome = nome;
+            this.matricula = matricula;
+            this.nota1 = nota1;
+            this.nota2 = nota2;
+        }
 
-    String calcularResultado(double media) {
-       if () {
-        
-       }
+        double calcularMedia() {
+            double mediaAluno = (nota1 + nota2) / 2;
+            return mediaAluno;
+        }
 
-       return 
-    }
+        String verificarSituacao(double mediaAprovacao) {
+            double mediaAluno = calcularMedia();
+            String resultado = mediaAluno >= mediaAprovacao ?
+            "Aprovado": "Reprovado";
 
-    void exibir() {
-        System.out.println("Aluno: " + this.aluno);
-        System.out.printf("Nota do aluno: <=80% %.2f%n", this.nota);
-        System.out.println("frequencia: " + this.frequencia);
-        System.out.printf("Resultado final: %.2f%n", calcularResultado());
-    }
+            return resultado;
+        }
+
+        void exibirResultado(double mediaAprovacao) {
+            double mediaAluno = calcularMedia();
+            String situacao = verificarSituacao(mediaAprovacao);
+            System.out.println("---------Resultado do Aluno--------------------");
+            System.out.println("Aluno: " + nome);
+            System.out.println("Matrícula: " + matricula);
+            System.out.println("Nota 1: " + nota1);
+            System.out.println("Nota 2: " + nota2);
+            System.out.println("Média: " + mediaAluno);
+            System.out.println("Situação: " + situacao);
+            System.out.println("------------------------------------------------");
+        }
 }
