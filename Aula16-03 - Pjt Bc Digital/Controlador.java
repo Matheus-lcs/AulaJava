@@ -73,7 +73,7 @@ public class Controlador {
         Telas.cabecalhoLogin();
 
         String numeroConta = Telas.lerTexto("Número da conta: ");
-        String senha = Telas.lerTexto("Senha: ");
+        // String senha = Telas.lerTexto("Senha: ");
 
         // Login completo será implementado na Aula 06, com a CentralBancaria.
         Telas.mensagem("Login recebido para a conta " + numeroConta + " (em breve).", false);
