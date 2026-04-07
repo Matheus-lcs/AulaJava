@@ -1,20 +1,18 @@
 public class Conta {
-    protected double saldo;
+    private double saldo;
+    private String numeroConta;
+    private Historico historico = new Historico();
 
-    public void depositar(double valor) {
-        saldo += valor;
+    // Getters
+    public double getSaldo() {
+        return this.saldo;
     }
 
-    public void sacar(double valor) {
-        saldo -= valor;
+    public String getNumeroConta() {
+        return this.numeroConta;
     }
 
-    public String descricao() {
-        return "Conta";
-    }
-
-    // Operacoes
-
+    // Operações
     public boolean depositar(double valor) {
         if (valor <= 0) {
             return false;

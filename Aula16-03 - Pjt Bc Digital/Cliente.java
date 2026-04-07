@@ -7,7 +7,9 @@ public class Cliente {
 
     private static final int IDADE_MINIMA = 16;
     private static final int ANO_MINIMO = 1900;
-    private static final DateTimeFormatter formatador = DateTimeFormatter.ofPattern("dd/MM/uuuu").withResolverStyle(ResolverStyle.STRICT);
+    private static final DateTimeFormatter formatador = DateTimeFormatter
+    .ofPattern("dd/MM/uuuu")
+    .withResolverStyle(ResolverStyle.STRICT);
 
     private String nome;
     private String cpf;
@@ -17,6 +19,7 @@ public class Cliente {
     private double saldo;
     private boolean bloqueada;
     private int tentativasFalhas;
+    private Conta conta;
 
     // GETTERS
 
