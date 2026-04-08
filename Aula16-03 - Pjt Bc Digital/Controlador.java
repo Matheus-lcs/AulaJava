@@ -80,9 +80,8 @@ public class Controlador {
             String status = central.login(numeroConta, senha, cliente);
 
             switch (status) {
-                case "ok":
-                    // iremos implementar
-                    Telas.mensagem("Login bem-sucedido! Bem-vindo, " + cliente.getNome() + "!", false);
+                case "OK":
+                    menuConta(cliente);
                     return;
                 case "CONTA_INEXISTENTE":
                     Telas.mensagem("Conta inexistente. Verifique o número e tente novamente", true);
@@ -104,25 +103,75 @@ public class Controlador {
 
     }
 
-    public static void menuConta() {
-        int MENU =  Telas.lerOpcao();
-        
-        switch (MENU) {
-            case 1:
-                System.out.println("Realizando deposito!");
-                break;
-            case 2:
-                System.out.println("Realizando saque!");
-                break;
-            case 3:
-                System.out.println("Realizando transferencia!");
-                break;
-            case 4:
-                System.out.println("Imrpimindo Extrato!");
-                break;
-            case 5:
-                System.out.println("Saindo...");
-                break;
+    public static void menuConta(Cliente cliente) {
+        int MENU;
+
+        do {
+            Telas.menuConta(cliente.getNome(), cliente.getSaldo());
+            MENU = Telas.lerOpcao();
+
+            switch (MENU) {
+                case 1:
+                    System.out.println("Realizando deposito!");
+                    break;
+                case 2:
+                    System.out.println("Realizando saque!");
+                    break;
+                case 3:
+                    System.out.println("Realizando transferencia!");
+                    break;
+                case 4:
+                    System.out.println("Imrpimindo Extrato!");
+                    break;
+                case 5:
+                    Telas.mensagem("Ate logo, " + cliente.getNome() + "!", false);
+                    break;
+                default:
+                    Telas.mensagem("Opção inválida.", true);
+            }
+
+        } while (MENU != 5);
+
+    }
+
+    // Operações
+
+    private static void depositar(Cliente cliente) {
+        Telas.limparTela();
+        double valor = Telas.lerValor("Valor a ser depositado: R$");
+
+        if (valor <= 0) {
+            Telas.mensagem("Valor inválido!", true);
+            return;
+        }
+
+        boolean ok = central.depositar(cliente, valor);
+        if (ok) {
+            Telas.mensagem(String.format("Depósito de R$ %.2f realizado com sucesso!", valor), false);
+        } else {
+            Telas.mensagem("Erro ao realizar o depósitpo!", true);
         }
     }
+
+    private static void sacar(Cliente cliente) {
+        Telas.limparTela();
+        double valor = Telas.lerValor("Valor que deseja sacar: R$");
+
+        if (valor <= 0) {
+            Telas.mensagem("Valor inválido!", true);
+            return;
+        }
+        if (valor > cliente.getSaldo()) {
+            Telas.mensagem("Saldo Insuficiente!", true);
+            return;
+        }
+        boolean ok = central.sacar(cliente, valor);
+        if (ok) {
+            Telas.mensagem(String.format("Saque de R$ %2.f realizando com sucesso!\nSaldo atual: R$ %.2f", valor,
+                    cliente.getSaldo()), false);
+        } else {
+            Telas.mensagem("Erro ao realizar o saque!", true);
+        }
+    }
+
 }
