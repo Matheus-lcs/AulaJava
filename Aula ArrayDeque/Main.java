@@ -6,7 +6,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        Deque<String> filaAnimais = new ArrayDeque<>();
+        Deque<Animal> filaAnimais = new ArrayDeque<>();
 
         int opcao;
 
@@ -37,7 +37,7 @@ public class Main {
                 case 3:
                     System.out.println("Fila atual: " + filaAnimais);
                     break;
-                case 4;
+                case 4:
                     System.out.println("Encerrando...");
                     break;
                 default:
